@@ -61,4 +61,38 @@ function optionChanged(val) {
                        allOutLabels=data.samples[j].otu_labels;
                }
                }
-       
+        //  Console logging the labels
+        console.log(otuLabels)
+      //  Tracing the horizontal bar
+      var trace1 = {
+        x: sampleValues,
+        y: otuIds,
+        hovertext:otuLabels,
+        type: "bar",
+        orientation: 'h'
+      };
+      
+      // Create the data array for our plot
+      var data_bar = [trace1];
+      
+      // Define our plot layout
+      var layout = {
+        title: "The highest critically acclaimed movies",
+        xaxis: { title: "Title" },
+        yaxis: { title: "Metascore (Critic) Rating"}
+      };
+     //  Plotting bar plot
+      Plotly.newPlot("bar", data_bar);
+    
+   //  Tracing bubble plot
+      var trace2 = {
+        x: allOutIds,
+        y: allSample,
+        hovertext:allOutLabels,
+        mode: 'markers',
+        marker: {
+          size: allSample,
+          color:allOutIds
+        }
+      };
+    
